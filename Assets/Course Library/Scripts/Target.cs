@@ -38,10 +38,13 @@ public class Target : MonoBehaviour
             {
                 if (hit.transform == transform)
                 {
-                   Destroy(hit.transform.gameObject);
-                   //Tạo hiệu ứng ngay tại vị trí bị destroy : 
-                   Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
-                   gameManager.UpdateScore(pointValue);
+                    if (hit.transform.CompareTag("Good"))
+                    {
+                        Destroy(hit.transform.gameObject);
+                        //Tạo hiệu ứng ngay tại vị trí bị destroy : 
+                        Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
+                        gameManager.UpdateScore(pointValue, 1, 0);
+                    }
                 }
             }
         }
