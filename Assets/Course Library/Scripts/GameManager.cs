@@ -23,8 +23,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         spawnCoroutine = StartCoroutine(SpawnTarget());
-        UpdateScore(0);
-        UpdateTotal(0,0);
+        UpdateScore(0,0,0);
     }
 
 
@@ -44,16 +43,13 @@ public class GameManager : MonoBehaviour
 
     }
     //Hàm tính toán diểm hiển thị trên giao diện : 
-    public void UpdateScore(int scoreToAdd)
+    public void UpdateScore(int scoreToAdd, int g, int b)
     {
         score += scoreToAdd;
-        scoreText.text = "Score: " + score;
-    }
-    public void UpdateTotal(int g, int b)
-    {
         good += g;
         bad += b;
+        scoreText.text = "Score: " + score;
         goodText.text = "Good: " + good;
         badText.text = "Bad: " + bad;
-    } 
+    }
 }

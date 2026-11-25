@@ -43,15 +43,13 @@ public class Target : MonoBehaviour
                         Destroy(hit.transform.gameObject);
                         //Tạo hiệu ứng ngay tại vị trí bị destroy : 
                         Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
-                        gameManager.UpdateScore(pointValue);
-                        gameManager.UpdateTotal(1, 0);
+                        gameManager.UpdateScore(pointValue, 1, 0);
                     }
-                    else
+                    else if(hit.transform.CompareTag("Bad"))
                     {
                         Destroy(hit.transform.gameObject);
                         Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
-                        gameManager.UpdateScore(pointValue);
-                        gameManager.UpdateTotal(0, 1);
+                        gameManager.UpdateScore(pointValue, 0, 1);
                     }
                 }
             }
