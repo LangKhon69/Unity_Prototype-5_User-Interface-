@@ -5,8 +5,8 @@ using UnityEngine.Rendering;
 public class Target : MonoBehaviour
 {
     private Rigidbody targetRb;
-    private float minSpeed = 12f;
-    private float maxSpeed = 16f;
+    private float minSpeed = 14f;
+    private float maxSpeed = 17f;
     private float maxTorque = 1f;
     private float xRange = 4f;
     private float yRange = 6f;
@@ -43,7 +43,15 @@ public class Target : MonoBehaviour
                         Destroy(hit.transform.gameObject);
                         //Tạo hiệu ứng ngay tại vị trí bị destroy : 
                         Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
-                        gameManager.UpdateScore(pointValue, 1, 0);
+                        gameManager.UpdateScore(pointValue);
+                        gameManager.UpdateTotal(1, 0);
+                    }
+                    else
+                    {
+                        Destroy(hit.transform.gameObject);
+                        Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
+                        gameManager.UpdateScore(pointValue);
+                        gameManager.UpdateTotal(0, 1);
                     }
                 }
             }

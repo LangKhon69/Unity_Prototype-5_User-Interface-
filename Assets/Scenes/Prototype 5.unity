@@ -1149,6 +1149,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 511589876}
+  goodText: {fileID: 350263918}
+  badText: {fileID: 402883551}
   targets:
   - {fileID: 6591920033838168404, guid: 26ee22abf7a06844399d70260f4a2d1a, type: 3}
   - {fileID: 7722391519977261259, guid: 1e7ec0e63f4f14549b0a6e8043c2349d, type: 3}
@@ -1367,6 +1369,7 @@ GameObject:
   - component: {fileID: 1829648831}
   - component: {fileID: 1829648830}
   - component: {fileID: 1829648829}
+  - component: {fileID: 1829648832}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -1442,6 +1445,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
+--- !u!65 &1829648832
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1829648827}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10, y: 2.2204466e-16, z: 10.000002}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2120347543
 GameObject:
   m_ObjectHideFlags: 0

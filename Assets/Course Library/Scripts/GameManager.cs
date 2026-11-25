@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText; //Khai báo biến tham chiếu đến G.O Text Mesh trong Scene View -> Điều chỉnh thuộc tính thông qua Scripts
     public TextMeshProUGUI goodText;
     public TextMeshProUGUI badText;
+
     public List<GameObject> targets;
     private float spawnRate = 1.0f;
     private int score; //Biến lưu trữ điểm hiển thị thông qua Text Mesh pro
@@ -22,7 +23,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         spawnCoroutine = StartCoroutine(SpawnTarget());
-        UpdateScore(0,0,0);
+        UpdateScore(0);
+        UpdateTotal(0,0);
     }
 
 
@@ -42,12 +44,16 @@ public class GameManager : MonoBehaviour
 
     }
     //Hàm tính toán diểm hiển thị trên giao diện : 
-    public void UpdateScore(int scoreToAdd, int b, int g)
+    public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = "Score: " + score;
-        goodText.text = "Good: " + good;
-        badText.text = "Text: " + bad;
-        
     }
+    public void UpdateTotal(int g, int b)
+    {
+        good += g;
+        bad += b;
+        goodText.text = "Good: " + good;
+        badText.text = "Bad: " + bad;
+    } 
 }
