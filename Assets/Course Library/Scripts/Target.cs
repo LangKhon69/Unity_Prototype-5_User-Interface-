@@ -5,11 +5,11 @@ using UnityEngine.Rendering;
 public class Target : MonoBehaviour
 {
     private Rigidbody targetRb;
-    private float minSpeed = 12f;
-    private float maxSpeed = 16f;
+    private float minSpeed = 15f;
+    private float maxSpeed = 18f;
     private float maxTorque = 1f;
     private float xRange = 4f;
-    private float yRange = 6f;
+    private float yRange = 8f;
 
     private GameManager gameManager;
     public int pointValue;
@@ -38,10 +38,14 @@ public class Target : MonoBehaviour
             {
                 if (hit.transform == transform)
                 {
-                   Destroy(hit.transform.gameObject);
-                   //Tạo hiệu ứng ngay tại vị trí bị destroy : 
-                   Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
-                   gameManager.UpdateScore(pointValue);
+                    if (gameManager.isGameActive)
+                    {
+                        Destroy(hit.transform.gameObject);
+                        //Tạo hiệu ứng ngay tại vị trí bị destroy : 
+                        Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
+                        gameManager.UpdateScore(pointValue);
+                    }
+                  
                 }
             }
         }
@@ -66,6 +70,10 @@ public class Target : MonoBehaviour
         if (other.CompareTag("DestroyZone"))
         {
             Destroy(this.gameObject);
+            if (gameObject.CompareTag("Good"))
+            {
+                gameManager.GameOver();
+            }
         }
     }
 
