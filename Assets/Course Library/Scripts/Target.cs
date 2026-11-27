@@ -69,15 +69,10 @@ public class Target : MonoBehaviour
     {
         if (other.CompareTag("DestroyZone"))
         {
-           
+            Destroy(this.gameObject);
             if (gameObject.CompareTag("Good"))
             {
-                Destroy(this.gameObject);
                 gameManager.GameOver();
-            }
-            else 
-            {
-                Destroy(this.gameObject);
             }
         }
     }
