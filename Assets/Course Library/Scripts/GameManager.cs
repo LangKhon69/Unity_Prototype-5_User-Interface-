@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour
     {
 
     }
-    IEnumerator SpawnTarget()
+    public IEnumerator SpawnTarget()
     {
-        while (isGameActive)
+        while (true)
         {
             yield return new WaitForSeconds(spawnRate);
             int index = Random.Range(0, targets.Count);
@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true); //Lệnh bật G.O - GameOverText lên màn hình
         restartButton.gameObject.SetActive(true);
         isGameActive = false;
+        StopCoroutine(spawnCoroutine);
     }
     public void RestartGame()
     {

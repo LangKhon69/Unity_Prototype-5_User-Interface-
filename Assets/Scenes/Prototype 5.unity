@@ -1152,7 +1152,7 @@ MonoBehaviour:
   - {fileID: 7722391519977261259, guid: 1e7ec0e63f4f14549b0a6e8043c2349d, type: 3}
   - {fileID: 8722706046345998295, guid: 3264ac902a194094797ac1b711df2e5c, type: 3}
   - {fileID: 1575293390862458606, guid: 64420b1d2d12be441bdff3f9f21758ca, type: 3}
-  isGameActive: 0
+  isGameActive: 1
 --- !u!4 &1287570665
 Transform:
   m_ObjectHideFlags: 0
