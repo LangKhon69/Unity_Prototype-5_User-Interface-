@@ -5,11 +5,11 @@ using UnityEngine.Rendering;
 public class Target : MonoBehaviour
 {
     private Rigidbody targetRb;
-    private float minSpeed = 14f;
-    private float maxSpeed = 17f;
+    private float minSpeed = 15f;
+    private float maxSpeed = 18f;
     private float maxTorque = 1f;
     private float xRange = 4f;
-    private float yRange = 6f;
+    private float yRange = 8f;
 
     private GameManager gameManager;
     public int pointValue;
@@ -36,20 +36,23 @@ public class Target : MonoBehaviour
             //Nếu tia chạm kể địch, kẻ địch sẽ bị tiêu diệt
             if (Physics.Raycast(ray, out RaycastHit hit))
             {
-                if (hit.transform == transform)
+                if (hit.transform == transform) //Kiem tra vat bi tia cham co phai la vat chua script nay khong
                 {
-                    if (hit.transform.CompareTag("Good"))
+                    if (gameManager.isGameActive)
                     {
-                        Destroy(hit.transform.gameObject);
-                        //Tạo hiệu ứng ngay tại vị trí bị destroy : 
-                        Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
-                        gameManager.UpdateScore(pointValue, 1, 0);
-                    }
-                    else if(hit.transform.CompareTag("Bad"))
-                    {
-                        Destroy(hit.transform.gameObject);
-                        Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
-                        gameManager.UpdateScore(pointValue, 0, 1);
+                        if (hit.transform.CompareTag("Good"))
+                        {
+                            Destroy(hit.transform.gameObject);
+                            //Tạo hiệu ứng ngay tại vị trí bị destroy : 
+                            Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
+                            gameManager.UpdateScore(pointValue, 1, 0);
+                        }
+                        else if (hit.transform.CompareTag("Bad"))
+                        {
+                            Destroy(hit.transform.gameObject);
+                            Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
+                            gameManager.UpdateScore(pointValue, 0, 1);
+                        }
                     }
                 }
             }
@@ -74,7 +77,16 @@ public class Target : MonoBehaviour
     {
         if (other.CompareTag("DestroyZone"))
         {
-            Destroy(this.gameObject);
+           
+            if (gameObject.CompareTag("Good"))
+            {
+                Destroy(this.gameObject);
+                gameManager.GameOver();
+            }
+            else 
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 
