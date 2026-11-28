@@ -28,6 +28,7 @@ public class Target : MonoBehaviour
 
     void Update()
     {
+
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             Ray ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
@@ -45,10 +46,10 @@ public class Target : MonoBehaviour
                         Instantiate(explosionPartical, transform.position, explosionPartical.transform.rotation);
                         gameManager.UpdateScore(pointValue);
                     }
-                  
                 }
-            }
+            }           
         }
+        if (!gameManager.isGameActive) targetRb.angularVelocity = Vector3.zero; //Gán tốc độ xoay của vật bằng = 0 dừng luôn
     }
     Vector3 RandomForce()
     {
@@ -73,8 +74,8 @@ public class Target : MonoBehaviour
             if (gameObject.CompareTag("Good"))
             {
                 gameManager.GameOver();
+                
             }
         }
     }
-
 }
